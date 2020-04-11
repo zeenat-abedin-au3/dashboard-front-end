@@ -65,3 +65,36 @@ nav.bg-light {
 .cursor-pointer {
   cursor: pointer;
 }
+
+.step-btn {
+  border: 1px solid transparent;
+  border-image: linear-gradient(69deg, #10abff, #1beabd);
+  border-image-slice: 1;
+  width: 100px;
+  text-transform: uppercase;
+  color: #333;
+  border-radius: 0.25rem;
+  margin-right: 1rem;
+  outline: none;
+}
+
+.step-btn:hover {
+  transition: 0.1s ease-in;
+  border: none;
+  background: linear-gradient(69deg, #10abff, #1beabd);
+  color: #fff;
+}
+
+.step-btn:focus,
+.step-btn:active {
+  outline: none;
+}
+
+button:focus {
+  outline: 0 !important;
+}
+
+button:active {
+  outline: none !important;
+  border: none !important;
+}

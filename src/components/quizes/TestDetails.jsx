@@ -4,16 +4,16 @@ import { useDispatch } from "react-redux";
 import Input from "../shared/Input";
 import FormGroup from "../shared/FormGroup";
 import { hideModal } from "../../redux/actions/modal";
-import { quizDetail } from "../../redux/actions/quiz";
+import { testDetail } from "../../redux/actions/test";
 
-const QuizDetails = () => {
+const TestDetails = () => {
   const dispatch = useDispatch();
 
-  const [quizDetails, setQuizDetails] = useState({
-    quizName: "",
+  const [testDetails, setTestDetails] = useState({
+    testName: "",
     numQuestion: "",
     marks: "",
-    quizTime: "",
+    testTime: "",
   });
 
   const closeModal = () => {
@@ -21,24 +21,24 @@ const QuizDetails = () => {
   };
 
   const handleChange = (e) => {
-    setQuizDetails({
-      ...quizDetails,
+    setTestDetails({
+      ...testDetails,
       [e.target.name]: e.target.value,
     });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    dispatch(quizDetail(quizDetails));
+    dispatch(testDetail(testDetails));
 
-    setQuizDetails({
-      quizName: "",
+    setTestDetails({
+      testName: "",
       numQuestion: "",
       marks: "",
-      quizTime: "",
+      testTime: "",
     });
   };
-  const { quizName, numQuestion, marks, quizTime } = quizDetails;
+  const { testName, numQuestion, marks, testTime } = testDetails;
   return (
     <div>
       <h3 className="text-center text-muted">
@@ -54,10 +54,10 @@ const QuizDetails = () => {
         <FormGroup>
           <Input
             type="text"
-            name="quizName"
+            name="testName"
             classNam="form-control"
             placeholder="Quiz name"
-            value={quizName}
+            value={testName}
             onChange={handleChange}
           />
         </FormGroup>
@@ -86,10 +86,10 @@ const QuizDetails = () => {
           <Input
             type="number"
             classNam="form-control"
-            name="quizTime"
+            name="testTime"
             placeholder="Time alloted (mins)"
             min="1"
-            value={quizTime}
+            value={testTime}
             onChange={handleChange}
           />
         </FormGroup>
@@ -106,4 +106,4 @@ const QuizDetails = () => {
   );
 };
 
-export default QuizDetails;
+export default TestDetails;

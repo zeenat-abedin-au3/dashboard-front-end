@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import QuizDetails from "./QuizDetails";
+import TestDetails from "./TestDetails";
 import CreateQuestions from "./CreateQuestions";
 
 const Quiz = () => {
   const {
-    quizDetails: { numQuestion },
-  } = useSelector((state) => state.quiz);
+    testDetails: { numQuestion },
+  } = useSelector((state) => state.test);
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -14,9 +14,9 @@ const Quiz = () => {
   }, [numQuestion]);
 
   if (!step) {
-    return <QuizDetails />;
+    return <TestDetails />;
   }
-  return <CreateQuestions />;
+  return <CreateQuestions step={step} />;
 };
 
 export default Quiz;
