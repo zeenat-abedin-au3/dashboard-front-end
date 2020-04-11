@@ -8,7 +8,7 @@ import quiz from "../../images/quiz.png";
 
 import "./Dashboard.css";
 import { showModal } from "../../redux/actions/modal";
-import QuizDetails from "../test/QuizDetails";
+import QuizDetails from "../quizes/QuizDetails";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
