@@ -1,8 +1,6 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Modal from "react-modal";
-
-import { hideModal } from "../../redux/actions/modal";
 
 const customStyles = {
   content: {
@@ -10,27 +8,18 @@ const customStyles = {
     left: "50%",
     right: "auto",
     bottom: "auto",
-    marginRight: "-50%",
     transform: "translate(-50%, -50%)",
+    width: "30vw",
   },
 };
 
 Modal.setAppElement("#root");
 
 const CustomModal = ({ children }) => {
-  const dispatch = useDispatch();
   const { visible } = useSelector((state) => state.auth);
 
-  const closeModal = () => {
-    dispatch(hideModal());
-  };
   return (
-    <Modal
-      isOpen={visible}
-      onRequestClose={closeModal}
-      style={customStyles}
-      contentLabel="Dialoge"
-    >
+    <Modal isOpen={visible} style={customStyles} contentLabel="Dialoge">
       {children}
     </Modal>
   );
