@@ -12,7 +12,12 @@ const NavBar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
+            <li className="nav-item dashboard-link mr-2">
+              <Link to="/dashboard" className="nav-link">
+                Dashboard
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link className="btn btn-login primary-color" to="/login">
                 Login
               </Link>

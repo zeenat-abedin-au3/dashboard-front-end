@@ -1,0 +1,11 @@
+.dashboard {
+  background: #f9fafe;
+  height: 100%;
+}
+
+.create-quiz-card {
+  height: 250px;
+}
+.create-quiz {
+  height: 100px;
+}
