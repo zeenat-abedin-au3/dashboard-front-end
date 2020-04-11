@@ -24,7 +24,7 @@ body {
   background-color: #3cb37f;
 }
 nav.bg-light {
-  background-color: #f5f3f3 !important;
+  background-color: #fff !important;
   box-shadow: 0 1px 10px rgba(200, 193, 193, 0.9);
 }
 .btn-login {
@@ -43,6 +43,7 @@ nav.bg-light {
 
 .dashboard-link {
   border: 1px solid #3cb37f;
+  border-radius: 0.25rem;
 }
 .dashboard-link a {
   padding: 5px;
@@ -52,6 +53,9 @@ nav.bg-light {
 .dashboard-link:hover {
   transition: ease 0.5s;
   background: #3cb37f;
+}
+.dashboard-link:hover a {
+  color: #fff !important;
 }
 
 .justify-content-evenly {

@@ -10,6 +10,14 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="container py-5">
+        <div className="row pb-3">
+          <div className="col-12">
+            <h4 className="text-left">
+              <span className="text-dark">Welcome Back, </span>{" "}
+              <span className="text-muted">John</span>
+            </h4>
+          </div>
+        </div>
         <div className="row">
           <div className="col-md-4">
             <Card>
