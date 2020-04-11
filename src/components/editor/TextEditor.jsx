@@ -1,7 +1,13 @@
 import React from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-const TextEditor = ({ initialText, editorHeight, handleChange, name }) => {
+const TextEditor = ({
+  initialText,
+  editorHeight,
+  handleChange,
+  name,
+  value,
+}) => {
   return (
     <Editor
       initialValue={initialText}
@@ -19,7 +25,8 @@ const TextEditor = ({ initialText, editorHeight, handleChange, name }) => {
             alignleft aligncenter alignright | \
             bullist numlist outdent indent | help",
       }}
-      onEditorChange={handleChange}
+      onChange={handleChange}
+      value={value}
       textareaName={name}
     />
   );

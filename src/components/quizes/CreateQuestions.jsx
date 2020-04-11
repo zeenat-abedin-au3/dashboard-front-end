@@ -1,16 +1,28 @@
 import React from "react";
 import StepZilla from "react-stepzilla";
+
 import createSteps, { slugify } from "../../util/createStep";
 import Question from "./Question";
 import "./Progress.css";
 
 const CreateQuestions = ({ step, showStep = false }) => {
-  const steps = createSteps(step).map((st) => ({
-    ...st,
-    component: <Question mulName={st.name} questionName={slugify(st.name)} />,
-  }));
-
-  console.log(steps);
+  const handleChange = (content, editor) => {
+    console.log(editor.getElement().name, "---", content);
+  };
+  const obj = {};
+  const steps = createSteps(step).map((st) => {
+    obj[slugify(st.name)] = "";
+    return {
+      ...st,
+      component: (
+        <Question
+          mulName={st.name}
+          questionName={slugify(st.name)}
+          handleChange={handleChange}
+        />
+      ),
+    };
+  });
 
   return (
     <div className="step-progress">
