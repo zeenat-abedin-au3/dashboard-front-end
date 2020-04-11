@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import Input from "../shared/Input";
 import FormGroup from "../shared/FormGroup";
 import { hideModal } from "../../redux/actions/modal";
+import { quizDetail } from "../../redux/actions/quiz";
 
 const QuizDetails = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,8 @@ const QuizDetails = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(quizDetails);
+
+    dispatch(quizDetail(quizDetails));
 
     setQuizDetails({
       quizName: "",
@@ -96,7 +98,7 @@ const QuizDetails = () => {
             className="btn primary-color text-uppercase text-white"
             style={{ width: "100px" }}
           >
-            Start
+            Next
           </button>
         </FormGroup>
       </form>
