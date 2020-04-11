@@ -1,12 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
-import Card from "../card/Card";
+import DashboardCard from "./DashboardCard";
+import Modal from "../modal/Modal";
 import createQuiz from "../../images/create_quiz.png";
 import quiz from "../../images/quiz.png";
 
 import "./Dashboard.css";
+import { showModal } from "../../redux/actions/modal";
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className="dashboard">
       <div className="container py-5">
@@ -19,30 +24,17 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col-md-4">
-            <Card>
-              <div className="d-flex flex-column justify-content-evenly align-items-center create-quiz-card cursor-pointer">
-                <h3 className="text-center text-muted">Create Quiz</h3>
-                <img
-                  src={createQuiz}
-                  className="img-fluid create-quiz"
-                  alt="create quiz"
-                />
-              </div>
-            </Card>
-          </div>
-          <div className="col-md-4">
-            <Card>
-              <div className="d-flex flex-column justify-content-evenly align-items-center create-quiz-card cursor-pointer">
-                <h3 className="text-center text-muted">All Quizes</h3>
-                <img
-                  src={quiz}
-                  className="img-fluid create-quiz"
-                  alt="create quiz"
-                />
-              </div>
-            </Card>
-          </div>
+          <DashboardCard
+            onClick={() => dispatch(showModal())}
+            cardHeader="Create Quiz"
+            cardImage={createQuiz}
+          />
+          <DashboardCard cardHeader="All Quizes" cardImage={quiz} />
+          <Modal>
+            <div className="card card-body">
+              <h2 className="text-center">This is a Modal</h2>
+            </div>
+          </Modal>
         </div>
       </div>
     </div>
