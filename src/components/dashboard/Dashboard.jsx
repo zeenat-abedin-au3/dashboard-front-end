@@ -8,7 +8,7 @@ import quiz from "../../images/quiz.png";
 
 import "./Dashboard.css";
 import { showModal } from "../../redux/actions/modal";
-import QuizDetails from "../quizes/QuizDetails";
+import Quiz from "../quizes/Quiz";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Dashboard = () => {
           />
           <DashboardCard cardHeader="All Quizes" cardImage={quiz} />
           <Modal>
-            <QuizDetails />
+            <Quiz />
           </Modal>
         </div>
       </div>
