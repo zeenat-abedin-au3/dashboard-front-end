@@ -26,7 +26,7 @@ const Dashboard = ({ history }) => {
       <div className="container py-5">
         <div className="row pb-3">
           <div className="col-12">
-            <h4 className="text-left">
+            <h4 className="text-center text-md-left">
               <span className="text-dark">Welcome Back, </span>{" "}
               <span className="text-muted">{userName}</span>
             </h4>

@@ -5,6 +5,7 @@ import TextEditor from "../editor/TextEditor";
 import Option from "./Option";
 import { setQuestion, selectedAnswer } from "../../redux/actions/test";
 import { slugify } from "../../util/createStep";
+import { hideModal } from "../../redux/actions/modal";
 
 const Question = ({ questionName, mulName }) => {
   const question = useSelector((state) => state.question);
@@ -23,6 +24,9 @@ const Question = ({ questionName, mulName }) => {
   const handleCheck = (opName) => {
     dispatch(selectedAnswer(questionName, slugify(opName)));
   };
+  const closeModal = () => {
+    dispatch(hideModal());
+  };
 
   return (
     <div className="container mb-5">
@@ -31,7 +35,15 @@ const Question = ({ questionName, mulName }) => {
           <div className="row">
             {/* Multiple choice name */}
             <div className="col-12">
-              <h3 className="text-center text-muted">{mulName}</h3>
+              <h3 className="text-center text-muted mul-choice-name">
+                {mulName}
+                <span className="float-right">
+                  <i
+                    onClick={closeModal}
+                    className="far fa-times-circle text-danger cursor-pointer"
+                  ></i>
+                </span>
+              </h3>
             </div>
             {/* Question Editor */}
             <div className="col-12">

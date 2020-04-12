@@ -69,7 +69,7 @@ const Quizes = ({ history }) => {
             {tests.map((test) => (
               <div
                 key={test._id}
-                className="cursor-pointer col-12 mb-4 quiz-test-details"
+                className="cursor-pointer col-11 col-md-12 m-auto mb-md-4 quiz-test-details"
                 onClick={() => handleClick(test._id)}
               >
                 <TestDetail

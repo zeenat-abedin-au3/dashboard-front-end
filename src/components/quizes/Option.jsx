@@ -9,7 +9,7 @@ const Option = ({
   handleCheck,
   checked,
 }) => (
-  <div className="col-md-6 mt-3 pb-2">
+  <div className="col-12 col-md-6 mt-3 pb-2">
     <h5 className="text-left text-muted">{optionName}</h5>
     <div className="d-flex align-items-center justify-content-between">
       <span className="mr-2">

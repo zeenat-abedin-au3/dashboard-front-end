@@ -41,7 +41,7 @@ const TestDetails = () => {
   };
   const { testName, numQuestion, marks, testTime } = testDetails;
   return (
-    <div style={{ width: "20vw" }}>
+    <div className="test-name-compo">
       <h3 className="text-center text-muted">
         <span>Quiz Details</span>
         <span className="float-right">

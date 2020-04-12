@@ -1,6 +1,7 @@
 .dashboard {
   background: #f9fafe;
   height: 100%;
+  background-attachment: fixed;
 }
 
 .create-quiz-card {
