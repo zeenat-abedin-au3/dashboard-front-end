@@ -143,6 +143,14 @@ i.fa-times-circle {
   }
 }
 
+@media only screen and (max-width: 580px) {
+  .nav-item.dashboard-link {
+    width: 100px;
+    text-align: center;
+    margin-bottom: 0.3rem;
+  }
+}
+
 @media only screen and (max-width: 340px) {
   .mul-choice-name {
     font-size: 1.5rem;
