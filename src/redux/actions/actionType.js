@@ -11,6 +11,7 @@ export const LOGOUT = "LOGOUT";
 
 export const GET_TESTS = "GET_TESTS";
 export const GET_TEST_DETAILS = "GET_TEST_DETAILS";
+export const CLEAN_SINGLE_TEST_DETAILS = "CLEAN_SINGLE_TEST_DETAILS";
 
 export const SET_ERROR = "SET_ERROR";
 export const CLEAR_ERROR = "CLEAR_ERROR";

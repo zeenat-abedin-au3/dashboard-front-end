@@ -1,11 +1,22 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getTests } from "../../redux/actions/test";
+
+import {
+  getTests,
+  getTestDetails,
+  cleanSingleTestDetails,
+} from "../../redux/actions/test";
 import TestDetail from "../shared/TestDetail";
+import Loading from "../shared/Loading";
+import RenderTest from "../shared/RenderTest";
+import { showModal, hideModal } from "../../redux/actions/modal";
+import CustomModal from "../modal/Modal";
+import ShowTestDetails from "./ShowTestDetails";
+
 const Quizes = ({ history }) => {
   const {
     auth: { token },
-    test: { tests },
+    test: { tests, singleTest },
   } = useSelector((state) => state);
 
   const dispatch = useDispatch();
@@ -16,10 +27,27 @@ const Quizes = ({ history }) => {
       history.push("/login");
     }
 
+    if (singleTest) {
+      dispatch(showModal());
+    }
+
     const authorizationToken = localToken || token;
-    console.log(authorizationToken);
     dispatch(getTests(authorizationToken));
-  }, [token, localToken]);
+  }, [token, localToken, singleTest]);
+
+  if (!tests.length) {
+    return <Loading />;
+  }
+
+  const handleClick = (testId) => {
+    const authorizationToken = localToken || token;
+    dispatch(getTestDetails(authorizationToken, testId));
+  };
+
+  const closeModal = () => {
+    dispatch(hideModal());
+    dispatch(cleanSingleTestDetails());
+  };
 
   return (
     <div className="container py-4">
@@ -34,6 +62,7 @@ const Quizes = ({ history }) => {
               <div
                 key={test._id}
                 className="cursor-pointer col-12 mb-4 quiz-test-details"
+                onClick={() => handleClick(test._id)}
               >
                 <TestDetail
                   testName={test.testName}
@@ -45,6 +74,12 @@ const Quizes = ({ history }) => {
           </div>
         )}
       </div>
+
+      {singleTest && (
+        <CustomModal>
+          <ShowTestDetails closeModal={closeModal} />
+        </CustomModal>
+      )}
     </div>
   );
 };

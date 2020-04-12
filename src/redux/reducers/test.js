@@ -1,4 +1,9 @@
-import { TEST_DETAILS, GET_TESTS } from "../actions/actionType";
+import {
+  TEST_DETAILS,
+  GET_TESTS,
+  GET_TEST_DETAILS,
+  CLEAN_SINGLE_TEST_DETAILS,
+} from "../actions/actionType";
 
 const INITIAL_STATE = {
   testDetails: {
@@ -7,7 +12,8 @@ const INITIAL_STATE = {
     marks: "",
     testTime: "",
   },
-  tests: null,
+  tests: [],
+  singleTest: null,
 };
 
 const testReducer = (state = INITIAL_STATE, action) => {
@@ -22,7 +28,16 @@ const testReducer = (state = INITIAL_STATE, action) => {
         ...state,
         tests: action.payload,
       };
-
+    case GET_TEST_DETAILS:
+      return {
+        ...state,
+        singleTest: action.payload,
+      };
+    case CLEAN_SINGLE_TEST_DETAILS:
+      return {
+        ...state,
+        singleTest: null,
+      };
     default:
       return state;
   }

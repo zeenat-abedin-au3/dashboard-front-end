@@ -7,6 +7,9 @@ import {
   SELECTED_ANSWER,
   GET_TESTS,
   SET_ERROR,
+  GET_TEST_DETAILS,
+  CLEAR_ERROR,
+  CLEAN_SINGLE_TEST_DETAILS,
 } from "./actionType";
 import axios from "../../util/axios";
 
@@ -54,6 +57,10 @@ export const getTests = (token) => async (dispatch) => {
       type: GET_TESTS,
       payload: response.data.data,
     });
+
+    dispatch({
+      type: CLEAR_ERROR,
+    });
   } catch (error) {
     const { error: errorMessage } = error.response.data;
     swal("Error", errorMessage, "error");
@@ -63,3 +70,31 @@ export const getTests = (token) => async (dispatch) => {
     });
   }
 };
+
+export const getTestDetails = (token, testId) => async (dispatch) => {
+  try {
+    const response = await axios.get(`/test/${testId}`, {
+      headers: { Authorization: "Bearer " + JSON.parse(token) },
+    });
+
+    dispatch({
+      type: GET_TEST_DETAILS,
+      payload: response.data.data,
+    });
+
+    dispatch({
+      type: CLEAR_ERROR,
+    });
+  } catch (error) {
+    const { error: errorMessage } = error.response.data;
+    swal("Error", errorMessage, "error");
+    dispatch({
+      type: SET_ERROR,
+      payload: errorMessage,
+    });
+  }
+};
+
+export const cleanSingleTestDetails = () => ({
+  type: CLEAN_SINGLE_TEST_DETAILS,
+});
