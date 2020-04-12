@@ -1,17 +1,26 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 import swal from "sweetalert";
 
 import RenderTest from "../shared/RenderTest";
 
 import "./ShowTest.css";
+import { createTest } from "../../redux/actions/test";
+import { hideModal } from "../../redux/actions/modal";
 
-const SubmitTest = () => {
-  const { test, question } = useSelector((state) => state);
+const SubmitTest = ({ history }) => {
+  const dispatch = useDispatch();
+  const {
+    test,
+    question,
+    auth: { token },
+  } = useSelector((state) => state);
 
   const questions = Object.values(question);
 
   const handleSubmit = () => {
+    const authToken = localStorage.getItem("token") || token;
     swal({
       title: "Are you sure?",
       text: "Your test will be created!!!",
@@ -22,12 +31,21 @@ const SubmitTest = () => {
       if (ifYes) {
         console.log(questions);
         console.log(test.testDetails);
+        dispatch(
+          createTest(authToken, {
+            ...test.testDetails,
+            questions,
+          })
+        );
+        dispatch(hideModal());
         swal("You have been created one test sucessfully", {
           icon: "success",
         });
+        history.push("/dashboard");
       }
     });
   };
+  console.log(history);
   return (
     <div className="container show-test">
       <div className="row">
@@ -47,4 +65,4 @@ const SubmitTest = () => {
   );
 };
 
-export default SubmitTest;
+export default withRouter(SubmitTest);

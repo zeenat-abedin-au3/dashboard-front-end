@@ -4,6 +4,7 @@ import {
   GET_TEST_DETAILS,
   CLEAN_SINGLE_TEST_DETAILS,
   LOGOUT,
+  CREATE_TEST,
 } from "../actions/actionType";
 
 const INITIAL_STATE = {
@@ -19,6 +20,17 @@ const INITIAL_STATE = {
 
 const testReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case CREATE_TEST:
+      return {
+        testDetails: {
+          testName: "",
+          numQuestion: "",
+          marks: "",
+          testTime: "",
+        },
+        tests: [],
+        singleTest: null,
+      };
     case TEST_DETAILS:
       return {
         ...state,

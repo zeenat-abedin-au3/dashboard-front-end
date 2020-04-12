@@ -10,6 +10,7 @@ import {
   GET_TEST_DETAILS,
   CLEAR_ERROR,
   CLEAN_SINGLE_TEST_DETAILS,
+  CREATE_TEST,
 } from "./actionType";
 import axios from "../../util/axios";
 
@@ -46,6 +47,31 @@ export const selectedAnswer = (qName, ans) => ({
   type: SELECTED_ANSWER,
   payload: { qName, ans },
 });
+
+export const createTest = (token, data) => async (dispatch) => {
+  try {
+    console.log(data);
+    const response = await axios.post("/test", data, {
+      headers: { Authorization: "Bearer " + JSON.parse(token) },
+    });
+    console.log(response);
+
+    dispatch({
+      type: CREATE_TEST,
+    });
+
+    dispatch({
+      type: CLEAR_ERROR,
+    });
+  } catch (error) {
+    const { error: errorMessage } = error.response.data;
+    swal("Error", errorMessage, "error");
+    dispatch({
+      type: SET_ERROR,
+      payload: errorMessage,
+    });
+  }
+};
 
 export const getTests = (token) => async (dispatch) => {
   try {

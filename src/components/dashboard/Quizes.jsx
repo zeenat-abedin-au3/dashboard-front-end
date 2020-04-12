@@ -65,7 +65,7 @@ const Quizes = ({ history }) => {
     <div className="container py-4">
       <div className="row">
         {tests && (
-          <div className="row">
+          <React.Fragment>
             {tests.map((test) => (
               <div
                 key={test._id}
@@ -79,7 +79,7 @@ const Quizes = ({ history }) => {
                 />
               </div>
             ))}
-          </div>
+          </React.Fragment>
         )}
       </div>
 

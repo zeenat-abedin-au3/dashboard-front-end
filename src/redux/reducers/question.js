@@ -2,6 +2,7 @@ import {
   SET_QUESTION,
   CREATE_QUES_OBJ,
   SELECTED_ANSWER,
+  CREATE_TEST,
 } from "../actions/actionType";
 
 const INITIAL_STATE = {};
@@ -33,6 +34,8 @@ const questionReducer = (state = INITIAL_STATE, action) => {
         ...state,
         ...payload,
       };
+    case CREATE_TEST:
+      return {};
     default:
       return state;
   }
