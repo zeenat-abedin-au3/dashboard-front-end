@@ -7,7 +7,7 @@ const Quiz = () => {
   const {
     testDetails: { numQuestion },
   } = useSelector((state) => state.test);
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(1);
 
   useEffect(() => {
     setStep(numQuestion);

@@ -1,25 +1,19 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import Modal from "react-modal";
+import { useSelector, useDispatch } from "react-redux";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    transform: "translate(-50%, -50%)",
-    minWidth: "30vw",
-  },
-};
-
-Modal.setAppElement("#root");
-
+import { hideModal } from "../../redux/actions/modal";
 const CustomModal = ({ children }) => {
   const { visible } = useSelector((state) => state.auth);
 
   return (
-    <Modal isOpen={visible} style={customStyles} contentLabel="Dialoge">
+    <Modal
+      open={visible}
+      center
+      showCloseIcon={false}
+      onClose={() => alert("First finish it. ")}
+    >
       {children}
     </Modal>
   );

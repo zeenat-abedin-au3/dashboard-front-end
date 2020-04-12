@@ -1,5 +1,4 @@
 .step-progress {
-  width: 50vw;
   text-align: center;
 }
 
@@ -98,4 +97,8 @@ ol.progtrckr li.progtrckr-done:before {
 
 ol.progtrckr li.progtrckr-done:hover:before {
   color: #333;
+}
+
+.radio-icon {
+  font-size: 1.2rem;
 }
