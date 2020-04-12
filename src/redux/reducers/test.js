@@ -3,6 +3,7 @@ import {
   GET_TESTS,
   GET_TEST_DETAILS,
   CLEAN_SINGLE_TEST_DETAILS,
+  LOGOUT,
 } from "../actions/actionType";
 
 const INITIAL_STATE = {
@@ -36,6 +37,13 @@ const testReducer = (state = INITIAL_STATE, action) => {
     case CLEAN_SINGLE_TEST_DETAILS:
       return {
         ...state,
+        singleTest: null,
+      };
+    case LOGOUT:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        tests: [],
         singleTest: null,
       };
     default:

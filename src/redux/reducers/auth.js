@@ -33,6 +33,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
         ...state,
         token: null,
         error: null,
+        visible: false,
       };
     case SET_ERROR:
       return {
