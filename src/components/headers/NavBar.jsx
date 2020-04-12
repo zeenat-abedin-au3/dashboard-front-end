@@ -32,7 +32,7 @@ const NavBar = ({ history }) => {
             </li>
             {localToke || token ? (
               <li className="nav-item" onClick={handleLogout}>
-                <a className="btn btn-login btn-outline-color">Logout</a>
+                <span className="btn btn-login btn-outline-color">Logout</span>
               </li>
             ) : (
               <li className="nav-item">
