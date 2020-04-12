@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import ShowOption from "../quizes/ShowOption";
 import parse from "html-react-parser";
+import TestDetail from "./TestDetail";
 
 const RenderTest = ({ questions, testDetails }) => {
   const { testName, marks, testTime } = testDetails;
@@ -8,23 +9,7 @@ const RenderTest = ({ questions, testDetails }) => {
     <Fragment>
       {/* test details */}
       <div className="col-12 mb-3">
-        <div className="card card-body flex-row justify-content-between align-items-center">
-          <h5 className="m-0">
-            <i className="fas fa-file-alt mr-2"></i>
-            <span className="text-muted">Test name: </span>
-            <span className="text-dark font-weight-bold">{testName}</span>
-          </h5>
-          <p className="m-0">
-            <i className="fas fa-star-of-life mr-2"></i>
-            <span className="text-muted">Total Mark: </span>
-            <span className="text-dark font-weight-bold">{marks}</span>
-          </p>
-          <p className="m-0">
-            <i className="far fa-clock mr-2"></i>
-            <span className="text-muted">Total time: </span>
-            <span className="text-dark font-weight-bold">{testTime}</span>
-          </p>
-        </div>
+        <TestDetail testName={testName} marks={marks} testTime={testTime} />
       </div>
       <hr />
       {/* All questions */}

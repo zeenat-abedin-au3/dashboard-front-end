@@ -1,9 +1,14 @@
+import swal from "sweetalert";
+
 import {
   TEST_DETAILS,
   SET_QUESTION,
   CREATE_QUES_OBJ,
   SELECTED_ANSWER,
+  GET_TESTS,
+  SET_ERROR,
 } from "./actionType";
+import axios from "../../util/axios";
 
 export const testDetail = (data) => ({
   type: TEST_DETAILS,
@@ -38,3 +43,23 @@ export const selectedAnswer = (qName, ans) => ({
   type: SELECTED_ANSWER,
   payload: { qName, ans },
 });
+
+export const getTests = (token) => async (dispatch) => {
+  try {
+    const response = await axios.get("/test", {
+      headers: { Authorization: "Bearer " + JSON.parse(token) },
+    });
+
+    dispatch({
+      type: GET_TESTS,
+      payload: response.data.data,
+    });
+  } catch (error) {
+    const { error: errorMessage } = error.response.data;
+    swal("Error", errorMessage, "error");
+    dispatch({
+      type: SET_ERROR,
+      payload: errorMessage,
+    });
+  }
+};

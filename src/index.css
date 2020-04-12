@@ -125,3 +125,17 @@ i.fa-times-circle {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.quiz-test-details {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0 0.5rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+.quiz-test-details:hover {
+  box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+.quiz-test-details .card {
+  border: none;
+}

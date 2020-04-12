@@ -16,7 +16,7 @@ const Dashboard = ({ history }) => {
   const { token } = useSelector((state) => state.auth);
   const localToken = localStorage.getItem("token");
   useEffect(() => {
-    if (!localToken || !token) {
+    if (!localToken && !token) {
       history.push("/login");
     }
   }, [token, localToken]);
@@ -38,7 +38,11 @@ const Dashboard = ({ history }) => {
             cardHeader="Create Quiz"
             cardImage={createQuiz}
           />
-          <DashboardCard cardHeader="All Quizes" cardImage={quiz} />
+          <DashboardCard
+            onClick={() => history.push("/quizes")}
+            cardHeader="All Quizes"
+            cardImage={quiz}
+          />
           <Modal>
             <Quiz />
           </Modal>

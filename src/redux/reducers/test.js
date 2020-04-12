@@ -1,4 +1,4 @@
-import { TEST_DETAILS } from "../actions/actionType";
+import { TEST_DETAILS, GET_TESTS } from "../actions/actionType";
 
 const INITIAL_STATE = {
   testDetails: {
@@ -7,6 +7,7 @@ const INITIAL_STATE = {
     marks: "",
     testTime: "",
   },
+  tests: null,
 };
 
 const testReducer = (state = INITIAL_STATE, action) => {
@@ -15,6 +16,11 @@ const testReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         testDetails: { ...action.payload },
+      };
+    case GET_TESTS:
+      return {
+        ...state,
+        tests: action.payload,
       };
 
     default:
