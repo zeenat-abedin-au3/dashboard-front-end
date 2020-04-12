@@ -1,5 +1,5 @@
 import axios from "../../util/axios";
-import { LOGIN, SET_ERROR } from "./actionType";
+import { LOGIN, SET_ERROR, CLEAR_ERROR, LOGOUT } from "./actionType";
 import swal from "sweetalert";
 
 export const login = (email, password) => async (dispatch) => {
@@ -14,6 +14,10 @@ export const login = (email, password) => async (dispatch) => {
       type: LOGIN,
       payload: token,
     });
+
+    dispatch({
+      type: CLEAR_ERROR,
+    });
   } catch (error) {
     const { error: errorMessage } = error.response.data;
     swal("Error", errorMessage, "error");
@@ -23,3 +27,7 @@ export const login = (email, password) => async (dispatch) => {
     });
   }
 };
+
+export const logout = () => ({
+  type: LOGOUT,
+});

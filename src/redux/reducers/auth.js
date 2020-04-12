@@ -3,6 +3,8 @@ import {
   HIDE_MODAL,
   LOGIN,
   SET_ERROR,
+  CLEAR_ERROR,
+  LOGOUT,
 } from "../actions/actionType";
 
 const INITIAL_STATE = {
@@ -19,10 +21,22 @@ const authReducer = (state = INITIAL_STATE, action) => {
         ...state,
         token: payload,
       };
+    case LOGOUT:
+      localStorage.removeItem("token");
+      return {
+        ...state,
+        token: null,
+        error: null,
+      };
     case SET_ERROR:
       return {
         ...state,
         error: payload,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
       };
     case SHOW_MODAL:
       return {

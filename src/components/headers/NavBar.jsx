@@ -1,12 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Link, withRouter } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import logo from "../../images/logo.png";
+import { logout } from "../../redux/actions/auth";
 
-const NavBar = () => {
+const NavBar = ({ history }) => {
+  const dispatch = useDispatch();
+
   const { token } = useSelector((state) => state.auth);
   const localToke = localStorage.getItem("token");
+
+  const handleLogout = () => {
+    dispatch(logout());
+    history.push("/login");
+  };
+
   return (
     <div>
       <nav className="navbar navbar-light  navbar-expand-sm bg-light">
@@ -22,7 +31,7 @@ const NavBar = () => {
               </Link>
             </li>
             {localToke || token ? (
-              <li className="nav-item">
+              <li className="nav-item" onClick={handleLogout}>
                 <a className="btn btn-login btn-outline-color">Logout</a>
               </li>
             ) : (
@@ -39,4 +48,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default withRouter(NavBar);
