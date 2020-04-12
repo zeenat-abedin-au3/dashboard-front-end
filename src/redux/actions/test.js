@@ -53,9 +53,10 @@ export const getTests = (token) => async (dispatch) => {
       headers: { Authorization: "Bearer " + JSON.parse(token) },
     });
 
+    const tests = response.data.data.length > 0 ? response.data.data : null;
     dispatch({
       type: GET_TESTS,
-      payload: response.data.data,
+      payload: tests,
     });
 
     dispatch({

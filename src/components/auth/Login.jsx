@@ -14,12 +14,13 @@ const Login = ({ history }) => {
     password: "",
   });
 
+  const localToken = localStorage.getItem("token");
   useEffect(() => {
-    const localToken = localStorage.getItem("token");
     if (localToken || token) {
       history.push("/dashboard");
     }
-  }, [token]);
+  }, [token, localToken]);
+
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -28,12 +29,7 @@ const Login = ({ history }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
     dispatch(login(email, password));
-    // setUser({
-    //   email: "",
-    //   password: ""
-    // })
   };
   const { email, password } = user;
   return (

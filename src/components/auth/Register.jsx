@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
+import swal from "sweetalert";
 
 import Input from "../shared/Input";
+import { signup } from "../../redux/actions/auth";
 
-const Register = () => {
+const Register = ({ history }) => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+
   const [user, setUser] = useState({
     fullName: "",
     email: "",
@@ -10,15 +17,31 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
+
+  const localToken = localStorage.getItem("token");
+  useEffect(() => {
+    if (localToken || token) {
+      history.push("/dashboard");
+    }
+  }, [token, localToken]);
+
   const handleChange = (e) => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(user);
+    const { fullName, email, phone, password, confirmPassword } = user;
+    if (password !== confirmPassword) {
+      swal("Oops!", "Password didn't match", "info");
+      return;
+    }
+
+    const data = { fullName, email, phone, password };
+    dispatch(signup(data));
   };
   const { fullName, email, phone, password, confirmPassword } = user;
   return (
@@ -86,4 +109,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default withRouter(Register);

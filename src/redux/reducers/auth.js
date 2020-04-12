@@ -5,6 +5,7 @@ import {
   SET_ERROR,
   CLEAR_ERROR,
   LOGOUT,
+  SIGNUP,
 } from "../actions/actionType";
 
 const INITIAL_STATE = {
@@ -17,6 +18,11 @@ const authReducer = (state = INITIAL_STATE, action) => {
   const { type, payload } = action;
   switch (type) {
     case LOGIN:
+      return {
+        ...state,
+        token: payload,
+      };
+    case SIGNUP:
       return {
         ...state,
         token: payload,

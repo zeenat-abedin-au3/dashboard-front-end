@@ -35,8 +35,20 @@ const Quizes = ({ history }) => {
     dispatch(getTests(authorizationToken));
   }, [token, localToken, singleTest]);
 
-  if (!tests.length) {
+  if (tests !== null && !tests.length) {
     return <Loading />;
+  }
+
+  if (!tests) {
+    return (
+      <div className="container py-4">
+        <div className="row">
+          <div className="col-12 text-center">
+            <h1 className="text-center text-muted">No Test Found</h1>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const handleClick = (testId) => {
@@ -52,11 +64,7 @@ const Quizes = ({ history }) => {
   return (
     <div className="container py-4">
       <div className="row">
-        {!tests ? (
-          <div className="col-12 text-center">
-            <h1 className="text-center text-muted">No Test Found</h1>
-          </div>
-        ) : (
+        {tests && (
           <div className="row">
             {tests.map((test) => (
               <div
