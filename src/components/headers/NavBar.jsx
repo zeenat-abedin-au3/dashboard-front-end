@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import logo from "../../images/logo.png";
 
 const NavBar = () => {
+  const { token } = useSelector((state) => state.auth);
+  const localToke = localStorage.getItem("token");
   return (
     <div>
       <nav className="navbar navbar-light  navbar-expand-sm bg-light">
@@ -17,11 +21,17 @@ const NavBar = () => {
                 Dashboard
               </Link>
             </li>
-            <li className="nav-item">
-              <Link className="btn btn-login primary-color" to="/login">
-                Login
-              </Link>
-            </li>
+            {localToke || token ? (
+              <li className="nav-item">
+                <a className="btn btn-login btn-outline-color">Logout</a>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Link className="btn btn-login primary-color" to="/login">
+                  Login
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </nav>

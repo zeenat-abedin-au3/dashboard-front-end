@@ -1,11 +1,29 @@
-import { SHOW_MODAL, HIDE_MODAL } from "../actions/actionType";
+import {
+  SHOW_MODAL,
+  HIDE_MODAL,
+  LOGIN,
+  SET_ERROR,
+} from "../actions/actionType";
 
 const INITIAL_STATE = {
   visible: false,
+  token: null,
+  error: null,
 };
 
 const authReducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
+    case LOGIN:
+      return {
+        ...state,
+        token: payload,
+      };
+    case SET_ERROR:
+      return {
+        ...state,
+        error: payload,
+      };
     case SHOW_MODAL:
       return {
         ...state,

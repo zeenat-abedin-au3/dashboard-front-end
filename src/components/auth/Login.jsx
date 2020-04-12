@@ -1,12 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 
 import Input from "../shared/Input";
+import { login } from "../../redux/actions/auth";
 
-const Login = () => {
+const Login = ({ history }) => {
+  const dispatch = useDispatch();
+  const { token } = useSelector((state) => state.auth);
+
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    const localToken = localStorage.getItem("token");
+    if (localToken || token) {
+      history.push("/dashboard");
+    }
+  }, [token]);
   const handleChange = (e) => {
     setUser({
       ...user,
@@ -16,6 +29,11 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(user);
+    dispatch(login(email, password));
+    // setUser({
+    //   email: "",
+    //   password: ""
+    // })
   };
   const { email, password } = user;
   return (
@@ -50,4 +68,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);

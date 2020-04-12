@@ -27,6 +27,17 @@ body {
 .primary-color {
   background-color: #3cb37f;
 }
+.btn-outline-color {
+  border: 1px solid #e71c26;
+  background: #fff;
+  color: #333;
+}
+
+.btn-outline-color:hover {
+  background: linear-gradient(69deg, #e71c26, #c01c1c);
+  color: #fff !important;
+}
+
 nav.bg-light {
   background-color: #fff !important;
   box-shadow: 0 1px 10px rgba(200, 193, 193, 0.9);

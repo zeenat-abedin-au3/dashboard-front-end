@@ -18,7 +18,8 @@
     "react-scripts": "3.4.1",
     "react-stepzilla": "^6.0.2",
     "redux": "^4.0.5",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "sweetalert": "^2.1.2"
   },
   "scripts": {
     "start": "react-scripts start",
