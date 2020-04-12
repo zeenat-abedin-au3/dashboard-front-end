@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import TextEditor from "../editor/TextEditor";
@@ -10,7 +10,13 @@ const Question = ({ questionName, mulName }) => {
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
-    dispatch(setQuestion(e.target.getElement().name, e.target.getContent()));
+    dispatch(
+      setQuestion(
+        questionName,
+        e.target.getElement().name,
+        e.target.getContent()
+      )
+    );
   };
 
   return (
@@ -29,32 +35,36 @@ const Question = ({ questionName, mulName }) => {
                 <TextEditor
                   initialText="Write your question here....."
                   editorHeight="200"
-                  name={questionName}
+                  name="question"
                   handleChange={handleChange}
-                  value={question[questionName]}
+                  value={question[questionName]["question"]}
                 />
               </div>
             </div>
             {/* Options */}
             <Option
               optionName="Option 1"
-              name={`${questionName}-option-1`}
+              name={`option-1`}
               handleChange={handleChange}
+              value={question[questionName]["option-1"]}
             />
             <Option
               optionName="Option 2"
-              name={`${questionName}-option-2`}
+              name={`option-2`}
               handleChange={handleChange}
+              value={question[questionName]["option-2"]}
             />
             <Option
               optionName="Option 3"
-              name={`${questionName}-option-3`}
+              name={`option-3`}
               handleChange={handleChange}
+              value={question[questionName]["option-3"]}
             />
             <Option
               optionName="Option 4"
-              name={`${questionName}-option-4`}
+              name={`option-4`}
               handleChange={handleChange}
+              value={question[questionName]["option-4"]}
             />
           </div>
         </div>

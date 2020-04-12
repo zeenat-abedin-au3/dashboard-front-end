@@ -3,7 +3,7 @@ import { TEST_DETAILS } from "../actions/actionType";
 const INITIAL_STATE = {
   testDetails: {
     testName: "",
-    numQuestion: 4,
+    numQuestion: "",
     marks: "",
     testTime: "",
   },

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import Input from "../shared/Input";
 import FormGroup from "../shared/FormGroup";
 import { hideModal } from "../../redux/actions/modal";
-import { testDetail } from "../../redux/actions/test";
+import { testDetail, createQuestionObj } from "../../redux/actions/test";
 
 const TestDetails = () => {
   const dispatch = useDispatch();
@@ -30,6 +30,7 @@ const TestDetails = () => {
     e.preventDefault();
 
     dispatch(testDetail(testDetails));
+    dispatch(createQuestionObj(testDetails.numQuestion));
 
     setTestDetails({
       testName: "",
@@ -40,7 +41,7 @@ const TestDetails = () => {
   };
   const { testName, numQuestion, marks, testTime } = testDetails;
   return (
-    <div>
+    <div style={{ width: "20vw" }}>
       <h3 className="text-center text-muted">
         <span>Quiz Details</span>
         <span className="float-right">

@@ -1,7 +1,7 @@
 import React from "react";
 import TextEditor from "../editor/TextEditor";
 
-const Option = ({ optionName, name, handleChange }) => (
+const Option = ({ optionName, name, handleChange, value }) => (
   <div className="col-md-6 mt-3 pb-2">
     <h5 className="text-left text-muted">{optionName}</h5>
     <div className="d-flex align-items-center justify-content-between">
@@ -15,6 +15,7 @@ const Option = ({ optionName, name, handleChange }) => (
           name={name}
           handleChange={handleChange}
           short={true}
+          value={value}
         />
       </div>
     </div>
