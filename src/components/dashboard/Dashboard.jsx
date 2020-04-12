@@ -13,7 +13,7 @@ import Quiz from "../quizes/Quiz";
 const Dashboard = ({ history }) => {
   const dispatch = useDispatch();
 
-  const { token } = useSelector((state) => state.auth);
+  const { token, userName } = useSelector((state) => state.auth);
   const localToken = localStorage.getItem("token");
   useEffect(() => {
     if (!localToken && !token) {
@@ -28,7 +28,7 @@ const Dashboard = ({ history }) => {
           <div className="col-12">
             <h4 className="text-left">
               <span className="text-dark">Welcome Back, </span>{" "}
-              <span className="text-muted">John</span>
+              <span className="text-muted">{userName}</span>
             </h4>
           </div>
         </div>

@@ -10,6 +10,7 @@ import {
 
 const INITIAL_STATE = {
   visible: false,
+  useName: "",
   token: null,
   error: null,
 };
@@ -20,12 +21,14 @@ const authReducer = (state = INITIAL_STATE, action) => {
     case LOGIN:
       return {
         ...state,
-        token: payload,
+        token: payload.token,
+        userName: payload.fullName,
       };
     case SIGNUP:
       return {
         ...state,
         token: payload,
+        userName: payload.fullName,
       };
     case LOGOUT:
       localStorage.removeItem("token");

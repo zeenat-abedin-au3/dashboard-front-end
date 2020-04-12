@@ -5,14 +5,14 @@ import swal from "sweetalert";
 export const login = (email, password) => async (dispatch) => {
   try {
     const response = await axios.post("/user/login", { email, password });
-    const { token } = response.data;
+    const { token, fullName } = response.data;
 
     // set token in local storage
     localStorage.setItem("token", JSON.stringify(token));
 
     dispatch({
       type: LOGIN,
-      payload: token,
+      payload: { token, fullName },
     });
 
     dispatch({
@@ -30,14 +30,14 @@ export const login = (email, password) => async (dispatch) => {
 export const signup = (data) => async (dispatch) => {
   try {
     const response = await axios.post("/user/signup", { ...data });
-    const { token } = response.data;
+    const { token, fullName } = response.data;
 
     // set token in local storage
     localStorage.setItem("token", JSON.stringify(token));
 
     dispatch({
       type: SIGNUP,
-      payload: token,
+      payload: { token, fullName },
     });
 
     dispatch({
