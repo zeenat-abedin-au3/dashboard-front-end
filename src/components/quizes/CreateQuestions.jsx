@@ -4,6 +4,7 @@ import StepZilla from "react-stepzilla";
 import createSteps, { slugify } from "../../util/createStep";
 import Question from "./Question";
 import "./Progress.css";
+import SubmitTest from "./SubmitTest";
 
 const CreateQuestions = ({ step, showStep = false }) => {
   const handleChange = (content, editor) => {
@@ -24,6 +25,11 @@ const CreateQuestions = ({ step, showStep = false }) => {
     };
   });
 
+  steps.push({
+    name: "Submit Test",
+    component: <SubmitTest />,
+  });
+
   return (
     <div className="step-progress">
       <StepZilla
@@ -31,6 +37,7 @@ const CreateQuestions = ({ step, showStep = false }) => {
         showSteps={showStep}
         backButtonCls="btn step-btn"
         nextButtonCls="btn step-btn"
+        nextTextOnFinalActionStep="Save"
       />
     </div>
   );

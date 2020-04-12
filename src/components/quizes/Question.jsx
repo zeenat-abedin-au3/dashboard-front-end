@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import TextEditor from "../editor/TextEditor";
-import { setQuestion } from "../../redux/actions/test";
 import Option from "./Option";
+import { setQuestion, selectedAnswer } from "../../redux/actions/test";
+import { slugify } from "../../util/createStep";
 
 const Question = ({ questionName, mulName }) => {
   const question = useSelector((state) => state.question);
@@ -17,6 +18,10 @@ const Question = ({ questionName, mulName }) => {
         e.target.getContent()
       )
     );
+  };
+
+  const handleCheck = (opName) => {
+    dispatch(selectedAnswer(questionName, slugify(opName)));
   };
 
   return (
@@ -47,24 +52,32 @@ const Question = ({ questionName, mulName }) => {
               name={`option-1`}
               handleChange={handleChange}
               value={question[questionName]["option-1"]}
+              checked={question[questionName]["answers"] === "option-1"}
+              handleCheck={handleCheck}
             />
             <Option
               optionName="Option 2"
               name={`option-2`}
               handleChange={handleChange}
               value={question[questionName]["option-2"]}
+              checked={question[questionName]["answers"] === "option-2"}
+              handleCheck={handleCheck}
             />
             <Option
               optionName="Option 3"
               name={`option-3`}
               handleChange={handleChange}
               value={question[questionName]["option-3"]}
+              checked={question[questionName]["answers"] === "option-3"}
+              handleCheck={handleCheck}
             />
             <Option
               optionName="Option 4"
               name={`option-4`}
               handleChange={handleChange}
               value={question[questionName]["option-4"]}
+              checked={question[questionName]["answers"] === "option-4"}
+              handleCheck={handleCheck}
             />
           </div>
         </div>

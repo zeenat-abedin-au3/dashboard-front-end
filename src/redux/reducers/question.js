@@ -1,4 +1,8 @@
-import { SET_QUESTION, CREATE_QUES_OBJ } from "../actions/actionType";
+import {
+  SET_QUESTION,
+  CREATE_QUES_OBJ,
+  SELECTED_ANSWER,
+} from "../actions/actionType";
 
 const INITIAL_STATE = {};
 
@@ -13,6 +17,15 @@ const questionReducer = (state = INITIAL_STATE, action) => {
         [qName]: {
           ...state[qName],
           [name]: value,
+        },
+      };
+    case SELECTED_ANSWER:
+      const { qName: qN, ans } = payload;
+      return {
+        ...state,
+        [qN]: {
+          ...state[qN],
+          ["answers"]: ans,
         },
       };
     case CREATE_QUES_OBJ:

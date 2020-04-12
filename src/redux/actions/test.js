@@ -1,4 +1,9 @@
-import { TEST_DETAILS, SET_QUESTION, CREATE_QUES_OBJ } from "./actionType";
+import {
+  TEST_DETAILS,
+  SET_QUESTION,
+  CREATE_QUES_OBJ,
+  SELECTED_ANSWER,
+} from "./actionType";
 
 export const testDetail = (data) => ({
   type: TEST_DETAILS,
@@ -20,6 +25,7 @@ export const createQuestionObj = (number) => {
       "option-2": "",
       "option-3": "",
       "option-4": "",
+      answers: "",
     };
   }
   return {
@@ -27,3 +33,8 @@ export const createQuestionObj = (number) => {
     payload: obj,
   };
 };
+
+export const selectedAnswer = (qName, ans) => ({
+  type: SELECTED_ANSWER,
+  payload: { qName, ans },
+});
