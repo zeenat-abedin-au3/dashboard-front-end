@@ -9,7 +9,7 @@ const NavBar = ({ history }) => {
   const dispatch = useDispatch();
 
   const { token } = useSelector((state) => state.auth);
-  const localToke = localStorage.getItem("token");
+  const localToken = localStorage.getItem("token");
 
   const handleLogout = () => {
     dispatch(logout());
@@ -25,12 +25,14 @@ const NavBar = ({ history }) => {
 
         <div className="collapse navbar-collapse" id="navbarNavDropdown">
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item dashboard-link mr-2">
-              <Link to="/dashboard" className="nav-link">
-                Dashboard
-              </Link>
-            </li>
-            {localToke || token ? (
+            {(localToken || token) && (
+              <li className="nav-item dashboard-link mr-2">
+                <Link to="/dashboard" className="nav-link">
+                  Dashboard
+                </Link>
+              </li>
+            )}
+            {localToken || token ? (
               <li className="nav-item" onClick={handleLogout}>
                 <span className="btn btn-login btn-outline-color">Logout</span>
               </li>

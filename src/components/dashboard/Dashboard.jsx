@@ -1,5 +1,5 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import DashboardCard from "./DashboardCard";
 import Modal from "../modal/Modal";
@@ -10,8 +10,16 @@ import "./Dashboard.css";
 import { showModal } from "../../redux/actions/modal";
 import Quiz from "../quizes/Quiz";
 
-const Dashboard = () => {
+const Dashboard = ({ history }) => {
   const dispatch = useDispatch();
+
+  const { token } = useSelector((state) => state.auth);
+  const localToken = localStorage.getItem("token");
+  useEffect(() => {
+    if (!localToken || !token) {
+      history.push("/login");
+    }
+  }, [token, localToken]);
 
   return (
     <div className="dashboard">
