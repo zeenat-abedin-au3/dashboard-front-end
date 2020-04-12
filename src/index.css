@@ -12,6 +12,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+p {
+  margin: 0;
+}
+
 html,
 body {
   height: 100%;
@@ -97,4 +101,16 @@ button:focus {
 button:active {
   outline: none !important;
   border: none !important;
+}
+
+i {
+  background: -webkit-linear-gradient(69deg, #10abff, #1beabd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+i.fa-times-circle {
+  background: -webkit-linear-gradient(69deg, #e71c26, #c01c1c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

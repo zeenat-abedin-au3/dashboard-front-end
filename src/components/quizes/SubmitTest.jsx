@@ -1,13 +1,28 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import RenderTest from "../shared/RenderTest";
+
+import "./ShowTest.css";
 
 const SubmitTest = () => {
-  const state = useSelector((state) => state);
-  console.log(state);
+  const { test, question } = useSelector((state) => state);
+
+  const questions = Object.values(question);
 
   return (
-    <div>
-      <h3 className="text-muted text-center">Submit Here</h3>
+    <div className="container show-test">
+      <div className="row">
+        <RenderTest questions={questions} testDetails={test.testDetails} />
+        {/* Submit test */}
+        <div className="col-12 mb-3 text-center">
+          <button
+            className="btn primary-color text-uppercase text-white"
+            style={{ width: "200px" }}
+          >
+            Submit test
+          </button>
+        </div>
+      </div>
     </div>
   );
 };

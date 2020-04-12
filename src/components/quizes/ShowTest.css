@@ -1,0 +1,10 @@
+.questions .options p {
+  font-size: 1.3rem;
+}
+
+.questions .options i {
+  background: -webkit-linear-gradient(69deg, #10abff, #1beabd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1rem;
+}
